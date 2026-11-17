@@ -41,6 +41,7 @@ function opening(reduced) {
     cover.remove();
     skip.remove();
     ScrollTrigger.refresh();
+    document.dispatchEvent(new Event("intro-complete"));
   };
   if (reduced || location.hash || scrollY > 20) {
     finish();
@@ -244,13 +245,24 @@ function footerPhysics(reduced) {
     Composite.add(engine.world, walls);
     elements.forEach((el, i) => {
       const radius = el.offsetWidth / 2;
-      const x = clamp(width * initial[i][0], radius + 10, width - radius - 10);
-      const y = clamp(height * initial[i][1], radius + 5, height - radius - 5);
+      const x = clamp(
+        width * (initial[i]?.[0] ?? 0.5),
+        radius + 10,
+        width - radius - 10,
+      );
+      const y = clamp(
+        height * (initial[i]?.[1] ?? 0.12),
+        radius + 5,
+        height - radius - 5,
+      );
       const body = Bodies.circle(x, y, radius, {
         restitution: 0.95,
         friction: 0.015,
         frictionAir: 0.002,
         density: 0.001,
+        isSensor:
+          el.classList.contains("custom-pack") &&
+          !el.classList.contains("landed"),
       });
       Body.setAngle(body, (noise(i + 9) - 0.5) * 3);
       Body.setVelocity(body, { x: (i % 2 ? -1 : 1) * 1.6, y: -2 - i * 0.2 });
@@ -343,9 +355,26 @@ function footerPhysics(reduced) {
     },
     { threshold: 0.02 },
   ).observe(area);
+  function checkVisibility() {
+    const rect = area.getBoundingClientRect();
+    visible = rect.top < innerHeight && rect.bottom > 0;
+    area.dataset.motion = visible ? "running" : "paused";
+    resume();
+  }
+  addEventListener("scroll", checkVisibility, { passive: true });
   addEventListener("resize", reset);
   document.addEventListener("visibilitychange", resume);
   reset();
+  document.addEventListener("custom-roll-drop", () => {
+    const custom = items.find((item) =>
+      item.el.classList.contains("custom-pack"),
+    );
+    if (!custom) return;
+    custom.body.isSensor = false;
+    Body.setPosition(custom.body, { x: width * 0.5, y: custom.radius + 5 });
+    Body.setVelocity(custom.body, { x: 2.5, y: 3 });
+    Body.setAngularVelocity(custom.body, 0.075);
+  });
 }
 
 export function startMotion() {

@@ -56,3 +56,22 @@ This is a visual recreation, not the original website's source code. Some imager
 Target URL: https://ejaubashi.github.io/t015/.
 
 Repository Settings → Pages must use **GitHub Actions** as the build source. Pushes to `main` build and deploy through `.github/workflows/deploy.yml`. The Vite base path is `/t015/`.
+
+## Experimental Sweet Lab experience
+
+The current version adds:
+
+- A continuous SVG tape ribbon that unrolls with page scroll and carries the selected colour into the sideways collection.
+- Procedural Three.js tape-roll meshes with a hollow core, printed faces, layered tape material, environment lighting, pointer rotation, and satin/gloss finishes. The renderer is loaded near a visible roll after the opening finishes and stops drawing offscreen. A CSS preview remains usable without WebGL.
+- A live customizer at `#studio`: rose/yellow/orange, an 18-character label, finish, and spin control. The design is stored locally on the same browser/device and appears on the ribbon, new playground strips, 3D previews, and footer roll.
+- A collage playground at `#play`: draw tape, join photos, move joined groups, peel individual strips, undo, and reset. The Add Strip control and photo arrow-key controls provide keyboard alternatives to drawing/dragging.
+- A stretchable pull-tab menu and curled/lifted photo hover treatment.
+- A final scroll sequence that delivers the custom roll into the existing physics footer. The **Let It Roll** button takes the design through this sequence; wheel/touch input can interrupt the automatic travel.
+
+New implementation files: `src/experience.js`, `src/experience.css`, `src/roll3d.js`, and `src/playground.js`. New tests are in `tests/experience.spec.js` and cover 3D rendering, design persistence, drawing, connected-photo movement, peeling/undo, stretched navigation, ribbon progress, footer handoff, and the WebGL fallback on desktop and mobile.
+
+Reduced-motion mode removes automatic camera/physics effects while retaining intentional editing and pointer actions. The playground is local to the current page; only the roll design persists across reloads.
+
+### Rollback point
+
+The version immediately before these experiments is preserved by Git tag **`before-experimental-experience`**, at commit **`de15b2c`** (the rose/yellow/orange version). Reverting the experimental feature commit restores that version without rewriting Git history. The tag remains available for comparison or restoration.

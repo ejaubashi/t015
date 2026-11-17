@@ -3,6 +3,7 @@ import "@fontsource/caveat/latin-400.css";
 import "./style.css";
 import { products, logo, pack } from "./catalog.js";
 import { startMotion } from "./motion.js";
+import { startExperience } from "./experience.js";
 const asset = (path) => `${import.meta.env.BASE_URL}reference/${path}`;
 const arrow = `<svg viewBox="0 0 360 180" fill="none" aria-hidden="true"><path d="M8 14C95 21 222 31 332 153M293 145l43 12-7-45" stroke="currentColor" stroke-width="1.2"/></svg>`;
 const photo = (name, cls = "", tape = "") =>
@@ -21,6 +22,7 @@ document.querySelector("#app").innerHTML = `
 <section class="contact paper" id="contact"><div class="contact-cards"><div class="contact-photo">${photo("contact")}</div><a href="mailto:hello@sweettape.example" class="contact-card"><h2 data-letters>LET’S<br>MAKE IT<br>STICK!</h2><span>For the big ideas and the little everyday things. ↗</span></a><span class="contact-tape"></span></div></section>
 <footer class="paper"><nav class="footer-nav" aria-label="Footer"><a href="#collection">OUR FAMILY</a><a href="#story">ABOUT</a><a href="#contact">CONTACT</a><a href="#home">BACK TO TOP ↑</a></nav><div class="footer-lockup">${logo}<h2 data-letters>STICK<br>BY YOU</h2></div><div class="footer-playground" aria-label="Play with the tape packs">${pack(products[2], "physics-pack")}${pack(products[1], "physics-pack")}${pack(products[0], "physics-pack")}${pack(products[3], "physics-pack")}<button class="physics-social" data-action="top" aria-label="Back to top">↑</button><a class="physics-social" href="mailto:hello@sweettape.example" aria-label="Email us">@</a></div><span class="play-hint handwritten">give us a little nudge.</span><p class="copyright">© ${new Date().getFullYear()} SWEET TAPE — RECREATED FROM YOUR RECORDINGS</p></footer>
 </main><button class="sound" aria-label="Enable sound" aria-pressed="false"><span>♪</span><span class="sound-status">SOUND OFF</span><i></i></button><div class="progress" aria-hidden="true"></div><dialog id="product-dialog"><button class="dialog-close" aria-label="Close product details">✕</button><div class="dialog-product"></div><div class="dialog-copy"></div></dialog>`;
+startExperience();
 const pull = document.querySelector(".menu-pull"),
   menu = document.querySelector("#menu");
 function toggleMenu(open) {
@@ -32,12 +34,19 @@ function toggleMenu(open) {
     : "PULL ME";
   if (open) menu.querySelector("a").focus();
 }
-pull.addEventListener("click", () =>
-  toggleMenu(pull.getAttribute("aria-expanded") !== "true"),
+pull.addEventListener("click", (event) => {
+  if (event.isTrusted && pull.dataset.suppressClick === "true") return;
+  toggleMenu(pull.getAttribute("aria-expanded") !== "true");
+});
+menu.querySelectorAll("a").forEach((a) =>
+  a.addEventListener("click", (event) => {
+    event.preventDefault();
+    toggleMenu(false);
+    const target = document.querySelector(a.hash);
+    target?.scrollIntoView({ behavior: "instant", block: "start" });
+    history.replaceState(null, "", a.hash);
+  }),
 );
-menu
-  .querySelectorAll("a")
-  .forEach((a) => a.addEventListener("click", () => toggleMenu(false)));
 document.addEventListener("keydown", (e) => {
   if (e.key === "Tab" && pull.getAttribute("aria-expanded") === "true") {
     const links = [...menu.querySelectorAll("a"), pull];
@@ -93,17 +102,13 @@ document.querySelectorAll("[data-family]").forEach((button) =>
     document.querySelector(".explore-button").dataset.product = p.id;
   }),
 );
-document
-  .querySelector('[data-action="top"]')
-  .addEventListener("click", () =>
-    document
-      .querySelector("#home")
-      .scrollIntoView({
-        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "instant"
-          : "smooth",
-      }),
-  );
+document.querySelector('[data-action="top"]').addEventListener("click", () =>
+  document.querySelector("#home").scrollIntoView({
+    behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "instant"
+      : "smooth",
+  }),
+);
 let audio;
 document.querySelector(".sound").addEventListener("click", async (e) => {
   const btn = e.currentTarget;
