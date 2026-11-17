@@ -1,6 +1,6 @@
-# Sweet Tape — interactive concept
+# Sweet Tape — scroll-driven recreation
 
-A responsive landing page inspired by the two supplied Sweet Tape screen recordings. Built with HTML, CSS, vanilla JavaScript, and Vite. Fonts are bundled locally. Product packs, paper textures, and collage artwork are recreated with CSS/SVG; no original website assets are required.
+A responsive recreation based on the two supplied screen recordings. Built with Vite, HTML/CSS, GSAP, and Matter.js. Fonts are bundled locally. The lifestyle cards and paper texture use stills extracted from the supplied recordings; product packs and other collage objects use CSS.
 
 ## Run
 
@@ -11,14 +11,25 @@ npm ci --cache /tmp/t015-npm-cache
 npm run dev
 ```
 
-The development server listens on all interfaces, port 5173 by default.
+Open the development server at `/t015/` (port 5173 by default).
 
 ```sh
 npm run build
 npm run preview
 ```
 
-The production output is in `dist/` and can be hosted as a static website.
+Production files are generated in `dist/` for static hosting.
+
+## Motion from the references
+
+- Centred logo opening followed by six curved, staggered colour wipes.
+- Individual letters assemble into the hero, manifesto, contact, and footer headings.
+- A layered 3D tape roll rotates as the hero passes into the paper collage.
+- Collage objects move at different speeds, with a curved SVG text ribbon.
+- An orange product-family scene supports switching between four products.
+- The collection pins to the viewport. Vertical scrolling drives a reversible horizontal camera: create → down-right transition → fix → up-right transition → protect. Product packs rotate independently.
+- Footer tape packs and circles bounce and collide using Matter.js; drag and release them to throw them.
+- Reduced-motion preference removes the intro and physics, and displays the entire product collection in normal vertical flow.
 
 ## Checks
 
@@ -26,22 +37,22 @@ The production output is in `dist/` and can be hosted as a static website.
 npm test
 ```
 
-Playwright tests run desktop (1440px) and mobile (390px) checks for navigation, product dialogs, sound controls, overflow, and browser errors. The included config uses `/usr/bin/chromium`; adjust `executablePath` for your own machine or install Playwright Chromium and remove that override.
+Playwright automatically starts or reuses the development server. The tests cover desktop (1440px) and mobile (390px) navigation, product dialogs, sound controls, family switching, overflow, forward/reverse horizontal and diagonal camera movement, footer motion and desktop dragging, reduced motion, and the complete opening sequence.
 
-## Features and editing
+System Chromium is used when available at `/usr/bin/chromium`; elsewhere install Playwright's browser with `npx playwright install chromium`.
 
-- Pull-tab navigation and anchor links
-- Scroll parallax, animated ticker, reveal effects, and reduced-motion support
-- Interactive product packs with accessible native modal dialogs
-- Optional synthesized sound confirmation (no audio downloads)
-- Product content and page markup: `src/main.js`
-- Visual design and responsive rules: `src/style.css`
+## Editing
 
-This is a visual concept, not an official Sweet Tape website. The `hello@sweettape.example` contact address is a placeholder; replace it before using the site publicly. No backend, checkout, analytics, or contact delivery service is connected.
+- `src/main.js`: page markup and interactions.
+- `src/catalog.js`: product content and pack markup.
+- `src/motion.js`: opening timeline, scroll effects, camera route, and footer physics.
+- `src/style.css`: design, responsive rules, and reduced-motion layout.
+- `public/reference/`: compressed stills extracted from the user's recordings.
+
+This is a visual recreation, not the original website's source code. Some imagery and timing remain approximations. The contact address `hello@sweettape.example` is a placeholder. No backend, checkout, analytics, or contact delivery service is connected.
 
 ## GitHub Pages
 
-The site is configured for https://ejaubashi.github.io/t015/.
-In repository Settings → Pages, select **GitHub Actions** as the build source.
-Pushes to `main` then build and deploy through `.github/workflows/deploy.yml`.
-The Vite base path is `/t015/`; development is served at that path too.
+Target URL: https://ejaubashi.github.io/t015/.
+
+Repository Settings → Pages must use **GitHub Actions** as the build source. Pushes to `main` build and deploy through `.github/workflows/deploy.yml`. The Vite base path is `/t015/`.
