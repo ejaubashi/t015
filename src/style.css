@@ -1,6 +1,6 @@
 .pack {
-  --pack: #ffcf36;
-  --rim: #a78212;
+  --pack: #ffe34b;
+  --rim: #c18a25;
   background: var(--pack);
   width: 235px;
   height: 235px;
@@ -12,7 +12,7 @@
   flex-shrink: 0;
   box-shadow:
     7px 12px 0 var(--rim),
-    12px 23px 22px #10240530;
+    12px 23px 22px #591e3230;
   transform: rotate(-13deg);
   transition:
     filter 0.25s,
@@ -23,7 +23,7 @@
   content: "";
   position: absolute;
   inset: 15px;
-  border: 1px solid #173e0838;
+  border: 1px solid #591e3238;
   border-radius: 50%;
 }
 .pack:after {
@@ -44,7 +44,7 @@
   width: 52px;
   height: 22px;
   border-radius: 50% 50% 12% 12%;
-  background: var(--green);
+  background: var(--ink);
   box-shadow: inset 0 4px 0 #0005;
 }
 .pack-rimtext {
@@ -88,9 +88,9 @@
   height: 19px;
   background: repeating-linear-gradient(
     90deg,
-    #173e08 0 1px,
+    #591e32 0 1px,
     transparent 1px 3px,
-    #173e08 3px 5px,
+    #591e32 3px 5px,
     transparent 5px 6px
   );
   border: 3px solid #fff9;
@@ -99,19 +99,21 @@
   position: absolute;
   bottom: 13px;
   font-family: var(--display);
-  color: var(--cream);
+  color: var(--ink);
   font-size: 17px;
 }
 :root {
-  --lime: #c4ff00;
-  --green: #173e08;
-  --cream: #fffce9;
+  --rose: #f58faa;
+  --yellow: #ffe34b;
+  --orange: #ff882e;
+  --ink: #591e32;
+  --cream: #fff7e8;
   --display: "Anton", Impact, sans-serif;
   --hand: "Caveat", cursive;
   --world-unit: 100vw;
   font-family: Arial, sans-serif;
-  color: var(--green);
-  background: var(--green);
+  color: var(--ink);
+  background: var(--ink);
   font-synthesis: none;
 }
 * {
@@ -141,7 +143,7 @@ a {
 }
 button:focus-visible,
 a:focus-visible {
-  outline: 3px solid #6f45bd;
+  outline: 3px solid #a6264c;
   outline-offset: 6px;
 }
 h1,
@@ -169,7 +171,8 @@ main {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.36;
+  opacity: 0.25;
+  filter: grayscale(1);
   mix-blend-mode: multiply;
   pointer-events: none;
   z-index: -1;
@@ -178,7 +181,7 @@ main {
 .brand {
   display: inline-block;
   position: relative;
-  background: var(--green);
+  background: var(--ink);
   color: var(--cream);
   font-family: Arial, sans-serif;
   font-weight: 1000;
@@ -203,7 +206,7 @@ main {
   font: 9px Arial;
   right: -9px;
   top: 0;
-  color: var(--green);
+  color: var(--ink);
 }
 .handwritten {
   font-family: var(--hand);
@@ -221,8 +224,8 @@ main {
   font-size: 12px;
   letter-spacing: 0.5px;
   padding: 8px 12px;
-  background: var(--green);
-  color: var(--lime);
+  background: var(--ink);
+  color: var(--rose);
   transform: rotate(-3deg);
   margin-bottom: 22px;
 }
@@ -273,7 +276,7 @@ header {
   top: 22px;
   left: 8px;
   right: 8px;
-  border-top: 2px dotted #6b7058;
+  border-top: 2px dotted #9b4b65;
 }
 .pull-arrow {
   font-size: 22px;
@@ -282,7 +285,7 @@ header {
 .hero {
   height: 100svh;
   min-height: 600px;
-  background: var(--lime);
+  background: var(--rose);
   border-radius: 0 0 50% 50% / 0 0 12% 12%;
   z-index: 3;
   overflow: hidden;
@@ -350,8 +353,8 @@ h1 {
 }
 .story {
   min-height: 130svh;
-  background: var(--green);
-  color: var(--lime);
+  background: var(--yellow);
+  color: var(--ink);
   padding: 18svh 5% 12svh;
   z-index: 4;
 }
@@ -396,7 +399,7 @@ h1 {
   left: 35%;
   top: 35%;
   border: 8px solid #d1c5aa;
-  background: var(--green);
+  background: var(--ink);
   border-radius: 50%;
 }
 .roll-back {
@@ -429,8 +432,8 @@ h1 {
   top: 3%;
   width: clamp(180px, 23vw, 340px);
   min-height: 260px;
-  background: #ffdf53;
-  color: #5c4d16;
+  background: #f58faa;
+  color: #591e32;
   padding: 35px 24px;
   transform: rotate(-6deg);
   box-shadow: 13px 17px 0 #0002;
@@ -444,7 +447,7 @@ h1 {
   font-family: var(--hand);
   font-size: 24px;
   line-height: 1.5;
-  border-bottom: 1px solid #b7942240;
+  border-bottom: 1px solid #b74e4240;
 }
 .note-smile {
   font-size: 40px;
@@ -455,8 +458,8 @@ h1 {
   width: 40%;
   right: 3%;
   top: 3%;
-  background: #c5aa7f;
-  color: #635019;
+  background: #ffc06b;
+  color: #591e32;
   min-height: 600px;
   padding: 45px 35px;
   transform: rotate(1deg);
@@ -500,8 +503,8 @@ h1 {
   box-shadow: 10px 12px 0 #0002;
 }
 .lemon-print i {
-  background: #386a4b;
-  color: #f9d937;
+  background: #f58faa;
+  color: #ffe34b;
   border: 7px solid var(--cream);
   border-radius: 60% 0;
   font-size: 100px;
@@ -517,9 +520,9 @@ h1 {
   aspect-ratio: 1;
   background: repeating-linear-gradient(
     90deg,
-    #e360ab 0 20px,
-    #f8b0d8 20px 23px,
-    #bc327e 23px 40px
+    #f58faa 0 20px,
+    #ffe34b 20px 23px,
+    #ea6438 23px 40px
   );
   transform: rotate(8deg);
   box-shadow: 10px 15px 0 #0002;
@@ -557,7 +560,7 @@ h1 {
   top: 15px;
   background: var(--cream);
   padding: 15px;
-  color: var(--green);
+  color: var(--ink);
   font: 27px var(--hand);
   transform: rotate(-15deg);
   z-index: 3;
@@ -580,15 +583,15 @@ h1 {
 .ribbon text {
   font-family: var(--display);
   font-size: 62px;
-  fill: var(--green);
+  fill: var(--ink);
   dominant-baseline: central;
   letter-spacing: 1px;
 }
 .spotlight {
   height: 110svh;
   min-height: 650px;
-  background: #e98a21;
-  color: #f8e82b;
+  background: #ff882e;
+  color: #ffe34b;
   border-radius: 0 0 50% 50% / 0 0 12% 12%;
   overflow: hidden;
   padding-top: 120px;
@@ -600,8 +603,8 @@ h1 {
   text-align: center;
 }
 .spotlight-copy .tag {
-  color: #80501b;
-  background: #f5e52a;
+  color: #591e32;
+  background: #ffe34b;
 }
 .spotlight-copy h2 {
   font-size: clamp(100px, 20vw, 290px);
@@ -626,7 +629,7 @@ h1 {
   width: clamp(220px, 27vw, 400px);
   height: clamp(220px, 27vw, 400px);
   transform: rotate(-9deg);
-  color: var(--green);
+  color: var(--ink);
 }
 .spotlight-product .pack strong {
   font-size: clamp(30px, 4vw, 57px);
@@ -645,7 +648,7 @@ h1 {
   position: absolute;
   left: 5%;
   top: 43%;
-  color: #fff5ac;
+  color: #591e32;
   max-width: 230px;
 }
 .spotlight-side p {
@@ -693,7 +696,7 @@ h1 {
   width: 65%;
   height: 65%;
   border-radius: 50%;
-  border: 2px solid #173e0840;
+  border: 2px solid #591e3240;
   position: relative;
 }
 .family-picker button span:after {
@@ -702,7 +705,7 @@ h1 {
   width: 30%;
   height: 30%;
   border-radius: 50%;
-  background: var(--green);
+  background: var(--ink);
   top: 35%;
   left: 35%;
 }
@@ -711,7 +714,7 @@ h1 {
   box-shadow: 0 0 0 3px #fff8;
 }
 .manifesto {
-  background: var(--lime);
+  background: var(--rose);
   text-align: center;
   padding: 25svh 20px 20svh;
   margin-top: -8svh;
@@ -731,7 +734,7 @@ h1 {
 .collection {
   position: relative;
   height: 760svh;
-  background: var(--lime);
+  background: var(--yellow);
   z-index: 2;
 }
 .journey-viewport {
@@ -739,7 +742,7 @@ h1 {
   top: 0;
   width: 100%;
   height: 100svh;
-  background: var(--lime);
+  background: var(--yellow);
   overflow: hidden;
 }
 .journey-world {
@@ -778,7 +781,7 @@ h1 {
   z-index: 3;
   width: clamp(150px, calc(var(--world-unit) * 0.24), 450px);
   height: clamp(210px, calc(var(--world-unit) * 0.27), 500px);
-  filter: drop-shadow(-9px 12px 0 #759c1a80);
+  filter: drop-shadow(-9px 12px 0 #b74e4280);
   transform: rotate(4deg);
 }
 .lifestyle img {
@@ -891,7 +894,7 @@ h1 {
   position: absolute;
   width: calc(var(--world-unit) * 0.55);
   height: 25svh;
-  color: #638b12;
+  color: #a33c50;
 }
 .journey-arrow svg {
   width: 100%;
@@ -992,7 +995,7 @@ h1 {
   padding-bottom: 5px;
 }
 .contact {
-  background: var(--lime);
+  background: var(--rose);
   padding: 10svh 9% 15svh;
   border-radius: 0 0 50% 50% / 0 0 9% 9%;
   z-index: 3;
@@ -1025,8 +1028,8 @@ h1 {
   min-height: 500px;
 }
 .contact-card {
-  background: var(--green);
-  color: var(--lime);
+  background: var(--ink);
+  color: var(--rose);
   border-radius: 28% 28% 28% 28%;
   display: flex;
   flex-direction: column;
@@ -1037,7 +1040,7 @@ h1 {
   transition: background 0.3s;
 }
 .contact-card:hover {
-  background: #254f0d;
+  background: #7b2c48;
 }
 .contact-card h2 {
   font-size: clamp(65px, 7.5vw, 130px);
@@ -1061,8 +1064,8 @@ h1 {
   z-index: 6;
 }
 footer {
-  background: var(--green);
-  color: var(--lime);
+  background: var(--orange);
+  color: var(--ink);
   position: relative;
   min-height: 110svh;
   overflow: hidden;
@@ -1072,7 +1075,7 @@ dialog {
   border: 0;
   border-radius: 20px;
   background: var(--cream);
-  color: var(--green);
+  color: var(--ink);
   padding: 70px 45px;
   max-width: 850px;
   width: 90vw;
@@ -1086,7 +1089,7 @@ dialog[open] {
   align-items: center;
 }
 dialog::backdrop {
-  background: #102b08aa;
+  background: #591e32aa;
   backdrop-filter: blur(8px);
 }
 .dialog-close {
@@ -1129,8 +1132,8 @@ dialog::backdrop {
 #menu {
   position: fixed;
   inset: 0;
-  background: var(--green);
-  color: var(--lime);
+  background: var(--ink);
+  color: var(--rose);
   z-index: 40;
   display: flex;
   flex-direction: column;
@@ -1146,7 +1149,7 @@ dialog::backdrop {
 #menu > a {
   font-family: var(--display);
   font-size: clamp(40px, 7vw, 105px);
-  border-bottom: 1px solid #c4ff0040;
+  border-bottom: 1px solid #f58faa40;
   padding: 15px 0;
   display: flex;
   justify-content: space-between;
@@ -1226,14 +1229,14 @@ dialog::backdrop {
   pointer-events: none;
 }
 .footer-lockup .brand {
-  background: var(--lime);
-  color: var(--green);
+  background: var(--yellow);
+  color: var(--ink);
   font-size: 30px;
   z-index: 1;
   margin-bottom: 3px;
 }
 .footer-lockup .tm {
-  color: var(--lime);
+  color: var(--ink);
 }
 .footer-lockup h2 {
   font-size: clamp(110px, min(15vw, 23svh), 250px);
@@ -1280,8 +1283,8 @@ dialog::backdrop {
   border-radius: 50%;
   width: clamp(70px, 10vw, 145px);
   height: clamp(70px, 10vw, 145px);
-  background: var(--lime);
-  color: var(--green);
+  background: var(--rose);
+  color: var(--ink);
   z-index: 4;
   display: grid;
   place-items: center;
@@ -1322,7 +1325,7 @@ dialog::backdrop {
 .opening-cover {
   position: absolute;
   inset: 0 0 -20%;
-  background: var(--lime);
+  background: var(--rose);
   border-radius: 0 0 50% 50% / 0 0 15% 15%;
   z-index: 7;
   display: grid;
@@ -1383,7 +1386,7 @@ body.intro-playing main {
 .sound i {
   width: 20px;
   height: 12px;
-  border: 1px solid #a3ab7b;
+  border: 1px solid #b9697c;
   border-radius: 20px;
   position: relative;
 }
@@ -1394,17 +1397,17 @@ body.intro-playing main {
   top: 1px;
   width: 8px;
   height: 8px;
-  background: #8a9365;
+  background: #a24a64;
   border-radius: 50%;
   transition: transform 0.2s;
 }
 .sound[aria-pressed="true"] i:after {
   transform: translateX(8px);
-  background: var(--green);
+  background: var(--ink);
 }
 .progress {
   height: 3px;
-  background: var(--green);
+  background: var(--ink);
   position: fixed;
   top: 0;
   left: 0;
@@ -1641,7 +1644,7 @@ body.intro-playing main {
     height: calc(var(--world-unit) * 0.32);
     min-width: 145px;
     min-height: 190px;
-    filter: drop-shadow(-5px 7px 0 #759c1a80);
+    filter: drop-shadow(-5px 7px 0 #b74e4280);
   }
   .create-photo {
     top: 20svh;
@@ -2045,7 +2048,7 @@ body.intro-playing main {
   background-repeat: repeat;
 }
 .pack {
-  color: var(--green);
+  color: var(--ink);
 }
 .physics-pack strong {
   font-size: clamp(23px, 3.2vw, 48px);
@@ -2071,7 +2074,7 @@ body.intro-playing main {
   font-family: "DejaVu Sans", sans-serif;
 }
 .hero-roll .roll-front strong {
-  color: var(--green);
+  color: var(--ink);
 }
 @media (max-width: 800px) {
   .physics-pack strong {
