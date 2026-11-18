@@ -7,3 +7,15 @@
 5. Drag the fixed **Pull Me** tab downward to stretch it and open the menu. Hover a lifestyle photo to lift its edge.
 
 The previous design is saved as `before-experimental-experience` / `de15b2c`. Saying “go back” is enough to request the rollback.
+
+## Try The Other Side
+
+- Choose **The Other Side** in the pull-tab menu, or continue below Make It Yours.
+- Drag the orange tear tab downward. You can also use the slider or Tear It Open button.
+- Choose Enter The Roll to pass through the aperture into the miniature factory.
+- Drag to orbit. Visit Colour, Label, and Dispatch using the buttons or by clicking a machine.
+- Change the colour and name; these are the same settings used by the existing customizer.
+- At Dispatch, choose Let's Make Magic, then Bring It Together. Watch the factory become particles and reform as your roll.
+- Play It Again and Start Again return to the paper without losing your design.
+
+For this experiment, saying “go back” means restoring **`before-impossible-factory` / `6a9b5e6`**, the version with Sweet Lab, the collage playground, and the cinematic footer, before the new factory was added.

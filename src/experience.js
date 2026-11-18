@@ -1,6 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { createPlayground } from "./playground.js";
+import { startFactory } from "./factory.js";
 import "./experience.css";
 
 const palette = { rose: "#f58faa", yellow: "#ffe34b", orange: "#ff882e" };
@@ -190,6 +191,7 @@ export function startExperience() {
   );
   document.querySelectorAll(".roll-view").forEach((el) => lazy.observe(el));
   sync();
+  startFactory();
   tactileMenu(reduced);
   setupThread(reduced);
   setupFinale(reduced);
